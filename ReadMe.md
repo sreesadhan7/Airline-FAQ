@@ -1,0 +1,1 @@
+# A simple Airline FAQ's portal creted using AWS RDS and serverless Lambda function.
