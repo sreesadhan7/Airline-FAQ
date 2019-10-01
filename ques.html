@@ -5,20 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Question</title>
+    <style>
+     body
+        {
+        margin: 0;
+        padding: 0; 
+        overflow:hidden;
+        background-size: cover;
+        }
+        #que{
+            
+            padding:10px;
+            margin-left:50%;
+            margin-top:-25%;
+            margin-right:2%;
+            font-size:20px;
+            font-family:courier,arial,helvetica;
+        }
+        #ime{
+            margin-top:10%;
+            margin-left:10px;
+        }
+        .vl {
+            border-left: 3px solid black;
+            height: 530px;
+            position: absolute;
+            left: 36%;
+            margin-left: 150px;
+            top: 90px;
+        }
+        #mm{
+            text-align: left;
+        }
+        #am{
+            margin-left:35%;
+            border:2px inset blue;
+            background:transparent;
+            cursor:pointer;
+        }
+        #vm
+        {
+            margin-left:30px;
+            padding:5px;
+            width: 300px;
+            font-size: 20px
+        }
+        .longInput
+        {
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-    <form action="https://gxgh8tl4rd.execute-api.us-east-1.amazonaws.com/first/first" method="GET">
-        <table>
-            <tr>
-                <td><label for="">Email : </label></td>
-                <td><input type="email" name="email" id=""></td>
-            </tr>
-            <tr>
-                    <td><label for="">Enter Your Query: </label></td>
-                    <td><input type="text" name="query" id=""></td>
-            </tr>
-        </table>
-        <input type="submit" value="Submit"> 
+    <div id="ime">
+    <img src="./images/2.jpg">
+    </div>
+    <div class="vl"></div>
+    <div id="que">
+        <form action="https://pqb3rtl4rd.execute-api.us-east-1.amazonaws.com/first/first" method="GET">
+                    <label for="">Email : </label>
+                    <input type="email" name="email" id="vm">
+                        <br/><br/><br/>
+                    <label for="">Enter Your Query  </label>
+                        <br/><br/>
+                    <textarea class="longInput" cols="50" rows="10" name="query"></textarea>
+            <br/><br/><br/>
+            <input type="submit" value="Submit" id="am"> 
     </form>
+    </div>
 </body>
 </html>

@@ -4,22 +4,24 @@ const path = require('path');
 const app = express();
 const port = 8000;
 
-var mysql      = require('mysql');
+var mysql     = require('mysql');
+console.log("Running in port 8000")
 
 var connection = mysql.createConnection({
-    host     : 'database-1.ck.us-east-1.rds.amazonaws.com',
+    host     : 'database-1.ckyyhhxxabte.us-east-1.rds.amazonaws.com',
     port      :  '3306',
     user     : 'admin',
     password : '',
-    database : 'case_study'
+    database : ''
 });
 
+app.use(express.static(__dirname+'/'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-    res.sendFile('index.html', { root: __dirname });
+    res.sendFile('/index.html');
 });
 
 app.post('/baggage', (req, res) => {
@@ -149,8 +151,7 @@ app.post('/visual', (req, res) => {
 });
 
 app.post('/ques', (req, res) => {
-
-      res.sendFile(path.join(__dirname+'/ques.html'));
+    res.sendFile(path.join(__dirname+'/ques.html'));
 });
 
 app.listen(port);

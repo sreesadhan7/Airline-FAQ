@@ -1,0 +1,4 @@
+{
+    "email":"$input.params("email")",
+    "question":"$input.params("query")"
+}

@@ -1,0 +1,28 @@
+use case_study;
+
+create table data
+(
+    q_categoryName varchar(50),
+    q_categoryCode integer,
+	question varchar(3000),
+    answer varchar(3000),
+    primary key(question)
+);
+-- drop table data; 
+
+select * from data;
+
+select count(q_categoryName) as cbaggage from data where q_categoryName = 'License';
+
+create table query
+(
+	id integer auto_increment,
+    email varchar(30),
+    question varchar(3000),
+    answer varchar(3000),
+    primary key(id)
+);
+ -- drop table query;
+insert into query(email,question) values("ram@gmail.com","i am groot");
+
+select * from query;
