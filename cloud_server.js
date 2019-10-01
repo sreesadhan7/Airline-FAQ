@@ -7,10 +7,10 @@ const port = 8000;
 var mysql      = require('mysql');
 
 var connection = mysql.createConnection({
-    host     : '',
+    host     : 'database-1.ckyyhhxxnsqz.us-east-1.rds.amazonaws.com',
     port      :  '3306',
     user     : 'admin',
-    password : '',
+    password : '199919991999',
     database : 'case_study'
 });
 
@@ -34,7 +34,8 @@ app.post('/baggage', (req, res) => {
           i++;
       });
     //   console.log(data);
-      res.render(path.join(__dirname+'/q&a.ejs'), {data: data});
+    var sec = "Baggage";
+      res.render(path.join(__dirname+'/q&a.ejs'), {data: data, sec:sec});
     });
 });
 
@@ -50,7 +51,8 @@ app.post('/Licence', (req, res) => {
           i++;
       });
     //   console.log(data);
-      res.render(path.join(__dirname+'/q&a.ejs'), {data: data});
+    var sec = "Licence";
+      res.render(path.join(__dirname+'/q&a.ejs'), {data: data, sec:sec});
     });
 });
 
@@ -66,7 +68,8 @@ app.post('/Passenger', (req, res) => {
           i++;
       });
     //   console.log(data);
-      res.render(path.join(__dirname+'/q&a.ejs'), {data: data});
+    var sec = "Passenger";
+      res.render(path.join(__dirname+'/q&a.ejs'), {data: data, sec:sec});
     });
 });
 
@@ -82,7 +85,8 @@ app.post('/Security', (req, res) => {
           i++;
       });
     //   console.log(data);
-      res.render(path.join(__dirname+'/q&a.ejs'), {data: data});
+    var sec = "Security";
+      res.render(path.join(__dirname+'/q&a.ejs'), {data: data, sec:sec});
     });
 });
 
@@ -98,7 +102,49 @@ app.post('/Special_needs', (req, res) => {
           i++;
       });
       console.log(data);
-      res.render(path.join(__dirname+'/q&a.ejs'), {data: data});
+      var sec = "Special Needs";
+      res.render(path.join(__dirname+'/q&a.ejs'), {data: data, sec:sec});
+    });
+});
+
+app.post('/visual', (req, res) => {
+
+    var baggage = 0, license = 0, passenger = 0, security = 0, splneeds = 0;
+
+    var sql = "select count(q_categoryName) as cbaggage from data where q_categoryName = 'Baggage'";
+    connection.query(sql, function (error, results, fields) {
+      if (error) throw error;
+        baggage = results[0].cbaggage;
+
+        var sql1 = "select count(q_categoryName) as clicense from data where q_categoryName = 'License'";
+        connection.query(sql1, function (error, results, fields) {
+        if (error) throw error;
+        license = results[0].clicense;
+
+        var sql2 = "select count(q_categoryName) as cpassenger from data where q_categoryName = 'Passenger'";
+        connection.query(sql2, function (error, results, fields) {
+        if (error) throw error;
+        passenger = results[0].cpassenger;
+
+        var sql3 = "select count(q_categoryName) as csecurity from data where q_categoryName = 'Security'";
+        connection.query(sql3, function (error, results, fields) {
+        if (error) throw error;
+        security = results[0].csecurity;
+
+        var sql4 = "select count(q_categoryName) as splneed from data where q_categoryName = 'Special Needs'";
+        connection.query(sql4, function (error, results, fields) {
+        if (error) throw error;
+        splneeds = results[0].splneed;
+        console.log("bagagge " + baggage);
+        console.log("license = " + license);
+        console.log("passenger = " + passenger);
+        console.log("security = " + security);
+        console.log("spl = " + splneeds);
+        res.render(path.join(__dirname+'/visual.ejs'), {bagagge: baggage, license:license, passenger: passenger, security:security, spl:splneeds});
+      });
+      });
+      });
+      });
     });
 });
 
