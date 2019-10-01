@@ -7,10 +7,10 @@ const port = 8000;
 var mysql      = require('mysql');
 
 var connection = mysql.createConnection({
-    host     : 'database-1.ckyyhhxxnsqz.us-east-1.rds.amazonaws.com',
+    host     : 'database-1.ck.us-east-1.rds.amazonaws.com',
     port      :  '3306',
     user     : 'admin',
-    password : '199919991999',
+    password : '',
     database : 'case_study'
 });
 
